@@ -88,7 +88,6 @@ class RawWebSocket:
                       path: str = '/apiws', *,
                       sni: Optional[str] = None, secure = True) -> 'RawWebSocket':
         ssl = _ssl_ctx_fronting if sni else _ssl_ctx
-        print(f"Connecting to {host} with secure={secure}, sni={sni}, path={path}")
 
         if sni is None:
             sni = domain
