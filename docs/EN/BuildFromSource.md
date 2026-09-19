@@ -51,6 +51,7 @@ tg-ws-proxy [--port PORT] [--host HOST] [--dc-ip DC:IP ...] [-v]
 | `--no-cfproxy` | `false` | Disable [Cloudflare proxying](./CfProxy.md) attempts |
 | `--cfproxy-domain` | | Specify your own domain for Cloudflare proxying [Learn more](./CfProxy.md). Can be specified multiple times. |
 | `--cfproxy-worker-domain` | | Cloudflare Worker domain [Learn more](./CfWorker.md). Can be specified multiple times. |
+| `--no-secure` | `false` | Use 80 port for CF-proxy and CF-worker connections |
 | `--fake-tls-domain` | | Enable Fake TLS masquerading (ee-secret) with specified SNI domain |
 | `--proxy-protocol` | disabled | Accept HAProxy PROXY protocol v1 (for use behind nginx/haproxy with `proxy_protocol on`) |
 | `--buf-kb` | `256` | Buffer size in KB |
@@ -64,13 +65,13 @@ tg-ws-proxy [--port PORT] [--host HOST] [--dc-ip DC:IP ...] [-v]
 
 ```bash
 # Standard startup
-tg-ws-proxy
+tg-ws-proxy --secret 00112233445566778899aabbccddeeff
 
 # Different port and additional DCs
 tg-ws-proxy --port 9050 --dc-ip 1:149.154.175.205 --dc-ip 2:149.154.167.220
 
-# With verbose logging
-tg-ws-proxy -v
+# With verbose logging, without direct connections to DCs
+tg-ws-proxy -v --dc-ip
 
 # Fake TLS masquerading (ee-secret)
 tg-ws-proxy --fake-tls-domain example.com

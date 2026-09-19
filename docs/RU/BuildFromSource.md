@@ -51,6 +51,7 @@ tg-ws-proxy [--port PORT] [--host HOST] [--dc-ip DC:IP ...] [-v]
 | `--no-cfproxy` | `false` | Отключить попытку [проксирования через Cloudflare](./CfProxy.md) |
 | `--cfproxy-domain` | | Указать свой домен для проксирования через Cloudflare [Подробнее](./CfProxy.md). Можно указать несколько через повторение аргумента. |
 | `--cfproxy-worker-domain` | | Домен Cloudflare Worker [Подробнее](./CfWorker.md). Можно указать несколько через повторение аргумента. |
+| `--no-secure` | `false` | Принудительно использует 80 порт для CF-proxy и CF-worker |
 | `--fake-tls-domain` | | Включить маскировку Fake TLS (ee-secret) с указанным SNI-доменом |
 | `--proxy-protocol` | выкл. | Принимать HAProxy PROXY protocol v1 (для работы за nginx/haproxy с `proxy_protocol on`) |
 | `--buf-kb` | `256` | Размер буфера в КБ |
@@ -64,13 +65,13 @@ tg-ws-proxy [--port PORT] [--host HOST] [--dc-ip DC:IP ...] [-v]
 
 ```bash
 # Стандартный запуск
-tg-ws-proxy
+tg-ws-proxy --secret 00112233445566778899aabbccddeeff
 
 # Другой порт и дополнительные DC
 tg-ws-proxy --port 9050 --dc-ip 1:149.154.175.205 --dc-ip 2:149.154.167.220
 
-# С подробным логированием
-tg-ws-proxy -v
+# С подробным логированием, без прямого подключения к DC
+tg-ws-proxy -v --dc-ip
 
 # Fake TLS маскировка (ee-secret)
 tg-ws-proxy --fake-tls-domain example.com
