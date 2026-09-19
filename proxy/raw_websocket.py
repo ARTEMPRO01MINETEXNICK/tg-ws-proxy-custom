@@ -1,5 +1,6 @@
 import os
 import ssl
+import certifi
 import logging
 import base64
 import struct
@@ -21,8 +22,8 @@ _st_BBQ4s = struct.Struct('>BBQ4s')
 _st_H = struct.Struct('>H')
 _st_Q = struct.Struct('>Q')
 
-_ssl_ctx = ssl.create_default_context()
-_ssl_ctx_fronting = ssl.create_default_context()
+_ssl_ctx = ssl.create_default_context(cafile=certifi.where())
+_ssl_ctx_fronting = ssl.create_default_context(cafile=certifi.where())
 _ssl_ctx_fronting.check_hostname = False
 
 class WsHandshakeError(Exception):
