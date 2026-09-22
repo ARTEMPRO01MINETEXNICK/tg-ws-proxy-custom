@@ -47,11 +47,10 @@ _CFWORKER_TEST_DST = {
 def _run_connectivity_test(cases: list, *, secure: bool = True) -> dict:
     import base64
     from contextlib import nullcontext
-    import ssl
-    import certifi
     import socket as _socket
+    from proxy.utils import create_ssl_context
 
-    ctx = ssl.create_default_context(cafile=certifi.where()) if secure else None
+    ctx = create_ssl_context() if secure else None
     port = 443 if secure else 80
     results = {}
     for dc, connect_host, sni_host, req_host, path in cases:
