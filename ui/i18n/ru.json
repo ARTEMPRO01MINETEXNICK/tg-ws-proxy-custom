@@ -32,7 +32,7 @@
   "label.cf_custom_domain": "Свой домен",
   "label.cfworker_domains": "Cloudflare Worker домены (через запятую)",
   "label.verbose": "Подробное логирование (verbose)",
-  "label.no_secure": "Выключиь TLS для CF-прокси и CF-worker",
+  "label.no_secure": "Выключить TLS для CF-прокси и CF-worker",
   "label.buf_kb": "Буфер, КБ (по умолчанию 256)",
   "label.pool_size": "Пул WebSocket-сессий (по умолчанию 4)",
   "label.log_max_mb": "Макс. размер лога, МБ (по умолчанию 5)",
