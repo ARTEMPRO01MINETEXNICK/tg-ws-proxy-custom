@@ -1,3 +1,4 @@
+
 # TG WS Proxy — Custom Build
 
 Локальный MTProto → WebSocket прокси для Telegram с современным интерфейсом.
@@ -33,6 +34,7 @@ TG WS Proxy — Custom Build — это форк проекта Flowseal/tg-ws-p
 - Python 3.11 или выше
 - Windows 10/11
 - Telegram Desktop (для протокола tg://)
+<img width="320" height="190" alt="rounded-in-photoretrica (6)" src="https://github.com/user-attachments/assets/8b185ff1-b4f3-4060-92bc-23425d9d572c" />
 
 ---
 ## Установка готового exe
